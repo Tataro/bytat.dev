@@ -1,17 +1,18 @@
 ---
+
 ---
 
 <canvas id="hero-canvas"></canvas>
 
 <script>
-  import { initScene } from '../lib/scene';
+  import { initScene } from "../lib/scene";
 
-  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
+  const canvas = document.getElementById("hero-canvas") as HTMLCanvasElement;
   if (canvas) {
     const cleanup = initScene(canvas);
 
     // Cleanup on page navigation (View Transitions / MPA)
-    document.addEventListener('astro:before-swap', cleanup, { once: true });
+    document.addEventListener("astro:before-swap", cleanup, { once: true });
   }
 </script>
 

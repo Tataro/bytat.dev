@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from "three";
 
 // ---------------------------------------------------------------------------
 // Floating particles — clean, minimal, warm
@@ -57,14 +57,17 @@ void main() {
 // Scene
 // ---------------------------------------------------------------------------
 export function initScene(canvas: HTMLCanvasElement): () => void {
-  const isMobile = globalThis.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
+  const isMobile =
+    globalThis.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
     antialias: true,
     alpha: true,
   });
-  renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio, isMobile ? 1.5 : 2));
+  renderer.setPixelRatio(
+    Math.min(globalThis.devicePixelRatio, isMobile ? 1.5 : 2),
+  );
   renderer.setSize(globalThis.innerWidth, globalThis.innerHeight);
   renderer.setClearColor(0x0f0d0a, 1);
 
@@ -86,9 +89,9 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
 
   for (let i = 0; i < count; i++) {
     // Spread wide, biased to the right so left text area stays clear
-    positions[i * 3] = (Math.random() - 0.2) * 14;      // x — shifted right
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 8;   // y
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;  // z
+    positions[i * 3] = (Math.random() - 0.2) * 14; // x — shifted right
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 8; // y
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // z
 
     sizes[i] = Math.random() * 3 + 0.8;
     speeds[i] = Math.random() * 0.3 + 0.1;
@@ -96,10 +99,10 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   }
 
   const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
-  geometry.setAttribute('aSpeed', new THREE.BufferAttribute(speeds, 1));
-  geometry.setAttribute('aOffset', new THREE.BufferAttribute(offsets, 1));
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
+  geometry.setAttribute("aSpeed", new THREE.BufferAttribute(speeds, 1));
+  geometry.setAttribute("aOffset", new THREE.BufferAttribute(offsets, 1));
 
   const uniforms = {
     uTime: { value: 0 },
@@ -128,7 +131,7 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   }
 
   if (!isMobile) {
-    globalThis.addEventListener('mousemove', onMouseMove);
+    globalThis.addEventListener("mousemove", onMouseMove);
   }
 
   // --- Resize ---
@@ -137,7 +140,7 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
     camera.updateProjectionMatrix();
     renderer.setSize(globalThis.innerWidth, globalThis.innerHeight);
   }
-  globalThis.addEventListener('resize', onResize);
+  globalThis.addEventListener("resize", onResize);
 
   // --- Animate ---
   let animationId: number;
@@ -163,8 +166,8 @@ export function initScene(canvas: HTMLCanvasElement): () => void {
   // --- Cleanup ---
   return () => {
     cancelAnimationFrame(animationId);
-    globalThis.removeEventListener('mousemove', onMouseMove);
-    globalThis.removeEventListener('resize', onResize);
+    globalThis.removeEventListener("mousemove", onMouseMove);
+    globalThis.removeEventListener("resize", onResize);
     geometry.dispose();
     material.dispose();
     renderer.dispose();

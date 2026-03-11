@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
 
 :root {
   --color-bg: #0f0d0a;
@@ -10,7 +10,7 @@
   --color-accent: #d4622c;
   --color-accent-hover: #e87a3a;
 
-  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
